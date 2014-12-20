@@ -58,13 +58,22 @@ var Deck = function () {
   this.pickNewClueCard = function () {
     if (_clueCards.length === 0) {
       _clueCards = Util.shuffle(this.usedClueCards);
-      usedClueCards = [];
+      this.usedClueCards = [];
     }
     return _clueCards.splice(0, 1)[0];
   };
 
-  this.playClueCard = function (card) {
-    usedClueCards.push(card);
+  this.exchangeClueCards = function (playerCards) {
+    this.usedClueCards = this.usedClueCards.concat(playerCards);
+    if (_clueCards.length < 4) {
+      _clueCards = _clueCards.concat(Util.shuffle(this.usedClueCards));
+      this.usedClueCards = [];
+    }
+    return _clueCards.splice(0, 4);
+  };
+
+  this.discardClueCard = function (card) {
+    this.usedClueCards.push(card);
   };
 
   this.checkMysteryGem = function (guess) {

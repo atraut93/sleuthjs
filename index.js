@@ -12,6 +12,9 @@ for (var i = 0; i < numPlayers; i++) {
 var deck = new Deck();
 deck.dealGemCards(players);
 deck.dealClueCards(players);
-console.log('Table Cards:\n', deck.tableCards);
+console.log('Table Cards:');
+deck.tableCards.forEach(function (card) {
+  console.log(card.toString());
+});
 
-console.log(players);
+console.log('Players:\n', players);
