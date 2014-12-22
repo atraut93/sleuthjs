@@ -1,3 +1,5 @@
+var _ = require('underscore');
+
 var Player = function (index, human) {
   var gemCards = [];
   this.clueCards = [];
@@ -10,6 +12,15 @@ var Player = function (index, human) {
 
   this.addClueCard = function (card) {
     this.clueCards.push(card);
+  };
+
+  this.queryGems = function (clueCard) {
+    var matchingGems = _.filter(gemCards, _.matches(clueCard));
+    if (_.keys(clueCard).length === 1) {
+      return matchingGems.length;
+    } else {
+      return _.isEmpty(matchingGems) ? 0 : matchingGems;
+    }
   };
 
 };

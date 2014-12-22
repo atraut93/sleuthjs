@@ -1,5 +1,4 @@
 var Deck = require('./deck'),
-    GemCard = require('./gemcard'),
     Player = require('./player');
 
 var Game = function (numPlayers) {
@@ -18,7 +17,14 @@ var Game = function (numPlayers) {
     console.log(card.toString());
   });
 
-  console.log('\nPlayers:\n', this.players);
+  console.log();
+
+  this.players.forEach(function (player) {
+    console.log(player.name + ' (' + (player.human ? 'human' : 'computer') + ')');
+    player.clueCards.forEach(function (card) {
+      console.log(card.toString());
+    });
+  })
 
 };
 
