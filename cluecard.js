@@ -16,9 +16,9 @@ var ClueCard = function (clueString) {
 };
 
 ClueCard.prototype.toString = function () {
-  return (this.color ? this.color + '/' : '') 
-          + (this.gemType ? this.gemType + '/' : '')
-          + (this.number ? this.number + '/' : '')
+  return (this.color ? this.color + ' ' : '') 
+          + (this.gemType ? this.gemType + ' ' : '')
+          + (this.number ? this.number + ' ' : '')
           + (this.freeChoice ? 'Free Choice' : '');
 };
 
