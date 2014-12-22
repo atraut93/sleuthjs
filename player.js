@@ -6,6 +6,7 @@ var Player = function (index, human) {
   self.clueCards = [];
   self.name = ('Player ' + index);
   self.human = human || false;
+  self.guessedIncorrectly = false;
 
   this.addGemCard = function (card) {
     _gemCards.push(card);
@@ -30,7 +31,7 @@ var Player = function (index, human) {
 
   this.playClueCard = function (playerOptions, callback) {
     if (self.human) {
-      inquirer.prompt({
+      inquirer.prompt([{
         type: 'list',
         name: 'clueCardChoice',
         message: 'Choose a clue card',
@@ -42,8 +43,22 @@ var Player = function (index, human) {
             }
           });
         }
-      }, function (answers) {
+      },
+      {
+        type: 'list',
+        name: 'playerChoice',
+        message: 'Choose a player to ask',
+        choices: function () {
+          return playerOptions.map(function (player, index) {
+            return {
+              name: player.name,
+              value: index
+            };
+          });
+        }
+      }], function (answers) {
         console.log(answers.clueCardChoice);
+        console.log(answers.playerChoice);
         callback();
       });
     } else {
