@@ -17,6 +17,7 @@
   },
   "license": "ISC",
   "dependencies": {
-    "inquirer": "^0.8.0"
+    "inquirer": "^0.8.0",
+    "underscore": "^1.7.0"
   }
 }

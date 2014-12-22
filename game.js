@@ -1,27 +1,24 @@
 var Deck = require('./deck'),
     GemCard = require('./gemcard'),
-    Player = require('./player'),
-    Util = require('./util');
+    Player = require('./player');
 
 var Game = function (numPlayers) {
-  var self = this;
-  self.players = [];
-  var _deck;
+  this.players = [];
+  var deck = new Deck();
 
   for (var i = 0; i < numPlayers; i++) {
     var p = new Player(i+1, i === 0);
-    self.players.push(p);
+    this.players.push(p);
   }
 
-  _deck = new Deck();
-  _deck.dealGemCards(self.players);
-  _deck.dealClueCards(self.players);
+  deck.dealGemCards(this.players);
+  deck.dealClueCards(this.players);
   console.log('Table Cards:');
-  _deck.tableCards.forEach(function (card) {
+  deck.tableCards.forEach(function (card) {
     console.log(card.toString());
   });
 
-  console.log('\nPlayers:\n', self.players);
+  console.log('\nPlayers:\n', this.players);
 
 };
 

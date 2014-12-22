@@ -1,9 +1,9 @@
-var Util = require('./util');
+var Defaults = require('./defaults');
 
 var GemCard = function (type, number, color) {
   this.gemType = type;
   this.numberString = number;
-  this.number = Util.numbers.indexOf(this.numberString) + 1;
+  this.number = Defaults.numbers.indexOf(this.numberString) + 1;
   this.color = color;
 };
 
